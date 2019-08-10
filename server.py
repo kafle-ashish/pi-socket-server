@@ -9,9 +9,9 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((socket.gethostname(), 5005))
 s.listen(5)
 
-green = Led(18)
-red = Led(12)
-yellow = Led(13)
+# green = Led(18)
+red = Led('BOARD3')
+# yellow = Led(13)
 
 
 while True:
@@ -25,10 +25,10 @@ while True:
     msg = client.recv()
     msg = pickle.dumps(msg)
     if msg['status'] == 'ON':
-        green.on()
-        red.off()
-    else:
-        green.off()
+        # green.on()
         red.on()
+    else:
+        # green.off()
+        red.off()
     print(msg)
     # clientsocket.send(msg)
