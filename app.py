@@ -16,7 +16,6 @@ print("Server started ...")
 while True:
     client, address = s.accept()
     print("Connection from {} has been established.".format(address))
-    while True:
     msg = client.recv(BUFFER)
     msg = msg.decode()
     command, id = msg.split(";")
