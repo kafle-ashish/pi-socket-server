@@ -13,6 +13,18 @@ leds = [oneA, oneB, twoA, twoB]
 
 BUFFER = 50
 print("Server started ...")
+
+def closeAll():
+    for led in leds:
+        led[0].off()
+        led[1].off()
+
+def ON(led):
+    led.on()
+
+def OFF(led):
+    led.off()
+    
 while True:
     client, address = s.accept()
     print("Connection from {} has been established.".format(address))
@@ -50,14 +62,3 @@ while True:
     if command == "ALL":
         closeAll()
     client.close()
-
-def closeAll():
-    for led in leds:
-        led[0].off()
-        led[1].off()
-
-def ON(led):
-    led.on()
-
-def OFF(led):
-    led.off()
