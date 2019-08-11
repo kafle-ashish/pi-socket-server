@@ -9,7 +9,7 @@ oneA = LEDBoard(2, 3)
 oneB = LEDBoard(4, 14)
 twoA = LEDBoard(15, 18)
 twoB = LEDBoard(17, 27)
-# leds = [oneAleds, oneBleds, twoAleds, twoBleds]
+leds = [oneA, oneB, twoA, twoB]
 
 BUFFER = 50
 print("Server started ...")
@@ -22,30 +22,42 @@ while True:
     if command == 'ON':
         print(command, id)
         if id == 'ONEA':
-            oneA[1].on()
-            oneA[0].off()
+            ON(oneA[1])
+            OFF(oneA[0])
         if id == 'ONEB':
-            oneB[1].on()
-            oneB[0].off()
+            ON(oneB[1])
+            OFF(oneB[0])
         if id == 'TWOA':
-            twoA[1].on()
-            twoA[0].off()
+            ON(twoA[1])
+            OFF(twoA[0])
         if id == 'TWOB':
-            twoB[1].on()
-            twoB[0].off()
+            ON(twoB[1])
+            OFF(twoB[0])
     if command == 'OFF':
         print(command, id)
         if id == 'ONEA':
-            oneA[1].off()
-            oneA[0].on()
+            OFF(oneA[1])
+            ON(oneA[0])
         if id == 'ONEB':
-            oneB[1].off()
-            oneB[0].on()
+            OFF(oneB[1])
+            ON(oneB[0])
         if id == 'TWOA':
-            twoA[1].off()
-            twoA[0].on()
+            OFF(twoA[1])
+            ON(twoA[0])
         if id == 'TWOB':
-            twoB[1].off()
-            twoB[0].on()
+            OFF(twoB[1])
+            ON(twoB[0])
+    if command == "ALL":
+        closeAll()
     client.close()
 
+def closeAll():
+    for led in leds:
+        led[0].off()
+        led[1].off()
+
+def ON(led):
+    led.on()
+
+def OFF(led):
+    led.off()
