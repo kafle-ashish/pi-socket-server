@@ -18,13 +18,15 @@ while True:
     print("Connection from {} has been established.".format(address))
     msg = client.recv(BUFFER)
     msg = msg.decode()
-    if msg[:2] == 'ON':
-        print(msg[:2])
-        if msg[2:6] == 'onea':
-            oneA[0].on()
-            oneA[1].off()
-    if msg[:3] == 'OFF':
-        print(msg[:3], "changing to off")
-        oneA[0].off()
-        oneA[1].on()
+    command, id = msg.split(";")
+    # if command == 'ON':
+    print(command, id)
+    #     if msg[2:6] == 'onea':
+    #         oneA[0].on()
+    #         oneA[1].off()
+    # if msg[:3] == 'OFF':
+    #     print(msg[:3], "changing to off")
+    #     oneA[0].off()
+    #     oneA[1].on()
+    
 
