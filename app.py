@@ -23,8 +23,8 @@ while True:
         if msg[2:6] == 'onea':
             oneA[0].on()
             oneA[1].off()
-    if msg[:3] = 'OFF':
-        print(msg[:3])
+    if msg[:3] == 'OFF':
+        print(msg[:3], "changing to off")
         oneA[0].off()
         oneA[1].on()
 
