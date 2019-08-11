@@ -19,14 +19,33 @@ while True:
     msg = client.recv(BUFFER)
     msg = msg.decode()
     command, id = msg.split(";")
-    # if command == 'ON':
-    print(command, id)
-    #     if msg[2:6] == 'onea':
-    #         oneA[0].on()
-    #         oneA[1].off()
-    # if msg[:3] == 'OFF':
-    #     print(msg[:3], "changing to off")
-    #     oneA[0].off()
-    #     oneA[1].on()
+    if command == 'ON':
+        print(command, id)
+        if id == 'ONEA':
+            oneA[1].on()
+            oneA[0].off()
+        if id == 'ONEB':
+            oneB[1].on()
+            oneB[0].off()
+        if id == 'TWOA':
+            twoA[1].on()
+            twoA[0].off()
+        if id == 'TWOB':
+            twoB[1].on()
+            twoB[0].off()
+    if command == 'OFF':
+        print(command, id)
+        if id == 'ONEA':
+            oneA[1].off()
+            oneA[0].on()
+        if id == 'ONEB':
+            oneB[1].off()
+            oneB[0].on()
+        if id == 'TWOA':
+            twoA[1].off()
+            twoA[0].on()
+        if id == 'TWOB':
+            twoB[1].off()
+            twoB[0].on()
     
 
